@@ -64,12 +64,14 @@ class Solution {
 // Function to print a linked list
 void printList(ListNode* node) {
     std::cout << "(";
+
     while (node) {
         std::cout << node->val;
         if (node->next != NULL)
             std::cout << " -> ";
         node = node->next;
     }
+
     std::cout << ")";
 }
 
@@ -98,5 +100,6 @@ int main(int argc, char** argv) {
     printf("\nOutput: ");
     printList(ans);
     printf("\n");
+    
     return 0;
 }

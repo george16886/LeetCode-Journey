@@ -56,11 +56,13 @@ int main(int argc, char** argv) {
     string a = "abcabcbb";
     string b = "bbbbb";
     string c = "pwwkew";
+
     int ans = solution.lengthOfLongestSubstring(a);
     cout << "The answer of \"" << a << "\" is: " << ans << endl;
     ans = solution.lengthOfLongestSubstring(b);
     cout << "The answer of \"" << b << "\" is: " << ans << endl;
     ans = solution.lengthOfLongestSubstring(c);
     cout << "The answer of \"" << c << "\" is: " << ans << endl;
+
     return 0;
 }
