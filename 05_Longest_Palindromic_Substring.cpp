@@ -62,25 +62,25 @@ class Solution2 {
 class Solution {
    public:
     string longestPalindrome(string s) {
-        if (s.empty()) return s;
-
         int max_length = 1;
         int start_idx = 0;
         int n = s.length();
-        bool dp[n][n] = {false};
+
+        if (!n) return s;
+        bool isPalindrome[n][n] = {false};
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j <= i; j++) {
                 if (i == j)
-                    dp[i][j] = true;
-                if ((s[i] == s[j]) && (i == j + 1))
-                    dp[i][j] = true;
-                if ((s[i] == s[j]) && (i > j + 1) && dp[i - 1][j + 1])
-                    dp[i][j] = true;
+                    isPalindrome[i][j] = true;
+                if ((i == j + 1) && (s[i] == s[j]))
+                    isPalindrome[i][j] = true;
+                if ((i > j + 1) && (s[i] == s[j]) && isPalindrome[i - 1][j + 1])
+                    isPalindrome[i][j] = true;
 
                 int length = i - j + 1;
-                // cout << "(" << i << ", " << j << "): dp = " << dp[i][j] << ", length = " << length << endl;
-                if (dp[i][j] && (length > max_length)) {
+                // cout << "(" << i << ", " << j << "): isPalindrome = " << isPalindrome[i][j] << ", length = " << length << endl;
+                if (isPalindrome[i][j] && (length > max_length)) {
                     max_length = length;
                     start_idx = j;
                 }
