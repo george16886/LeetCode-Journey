@@ -31,7 +31,7 @@ class Solution1 {
         }
     }
 };
-class Solution {
+class Solution2 {
    public:
     string longestPalindrome(string s) {
         int max_length = 1;
@@ -56,6 +56,38 @@ class Solution {
             max_length = length;
             start_idx = left + 1;
         }
+    }
+};
+
+class Solution {
+   public:
+    string longestPalindrome(string s) {
+        if (s.empty()) return s;
+
+        int max_length = 1;
+        int start_idx = 0;
+        int n = s.length();
+        bool dp[n][n] = {false};
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j <= i; j++) {
+                if (i == j)
+                    dp[i][j] = true;
+                if ((s[i] == s[j]) && (i == j + 1))
+                    dp[i][j] = true;
+                if ((s[i] == s[j]) && (i > j + 1) && dp[i - 1][j + 1])
+                    dp[i][j] = true;
+
+                int length = i - j + 1;
+                // cout << "(" << i << ", " << j << "): dp = " << dp[i][j] << ", length = " << length << endl;
+                if (dp[i][j] && (length > max_length)) {
+                    max_length = length;
+                    start_idx = j;
+                }
+            }
+        }
+
+        return s.substr(start_idx, max_length);
     }
 };
 
