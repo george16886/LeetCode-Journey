@@ -59,7 +59,7 @@ class Solution2 {
     }
 };
 
-class Solution {
+class Solution3 {
    public:
     string longestPalindrome(string s) {
         int max_length = 1;
@@ -88,6 +88,39 @@ class Solution {
         }
 
         return s.substr(start_idx, max_length);
+    }
+};
+
+class Solution {  // Manacher Algorithm
+   public:
+    string longestPalindrome(string s) {
+        string t = "$#";
+
+        // Insert '#'
+        for (int i = 0; i < s.size(); ++i) {
+            t += s[i];
+            t += '#';
+        }
+
+        int p[t.size()] = {0}, id = 0, mx = 0, resId = 0, resMx = 0;
+        // id is the center of palindrome substring that reaches the rightest side of p
+        // mx is the rightest index of palindrome substring in p
+        // resId, resMx denotes the center and length of longest palindrome substring in p, respectively
+
+        for (int i = 1; i < t.size(); ++i) {
+            p[i] = mx > i ? min(p[2 * id - i], mx - i) : 1;
+            while (t[i + p[i]] == t[i - p[i]]) ++p[i];
+            if (mx < i + p[i]) {
+                mx = i + p[i];
+                id = i;
+            }
+            if (resMx < p[i]) {
+                resMx = p[i] - 1;
+                resId = i;
+            }
+        }
+
+        return s.substr((resId - resMx) / 2, resMx);
     }
 };
 
