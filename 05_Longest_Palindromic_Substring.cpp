@@ -94,33 +94,44 @@ class Solution3 {
 class Solution {  // Manacher Algorithm
    public:
     string longestPalindrome(string s) {
-        string t = "$#";
-
-        // Insert '#'
+        string t = "$#";  // '$' is prepended to avoid boundary checking.
+                          // '#' is interleaved inserted to unify processing of palindromes with even or odd length.
         for (int i = 0; i < s.size(); ++i) {
             t += s[i];
             t += '#';
         }
 
-        int p[t.size()] = {0}, id = 0, mx = 0, resId = 0, resMx = 0;
-        // id is the center of palindrome substring that reaches the rightest side of p
-        // mx is the rightest index of palindrome substring in p
-        // resId, resMx denotes the center and length of longest palindrome substring in p, respectively
+        int P[t.size()] = {0};  // The expansion length to the left or to the right.
+        int c = 0;              // The center of palindromic substring that reaches the rightest side of P.
+        int r = 0;              // The rightest index (right boundary) of palindromic substring in P.
+        int cWithMaxLen = 0;    // Center of longest palindromic substring in P.
+        int maxLen = 0;         // Length of longest palindromic substring in P.
 
         for (int i = 1; i < t.size(); ++i) {
-            p[i] = mx > i ? min(p[2 * id - i], mx - i) : 1;
-            while (t[i + p[i]] == t[i - p[i]]) ++p[i];
-            if (mx < i + p[i]) {
-                mx = i + p[i];
-                id = i;
+            int mirror = (2 * c) - i;  // The mirror index of i.
+
+            // See if the mirror of i is expanding beyond the left boundary of current longest palindrome at center c.
+            // If it is, then take r - i as P[i]; else take P[mirror] as P[i].
+            P[i] = (i < r) ? min(P[mirror], r - i) : 1;
+
+            // Attempt to expand palindrome centered at i.
+            while (t[i + P[i]] == t[i - P[i]]) ++P[i];
+
+            // Check if the expanded palindrome at i is expanding beyond the right boundary of current longest palindrome at center c.
+            // If it is, the new center is i.
+            if (i + P[i] > r) {
+                r = i + P[i];
+                c = i;
             }
-            if (resMx < p[i]) {
-                resMx = p[i] - 1;
-                resId = i;
+
+            // Update max length and the corresponding center.
+            if (P[i] > maxLen) {
+                maxLen = P[i] - 1;
+                cWithMaxLen = i;
             }
         }
 
-        return s.substr((resId - resMx) / 2, resMx);
+        return s.substr((cWithMaxLen - maxLen) / 2, maxLen);
     }
 };
 

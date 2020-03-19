@@ -1,5 +1,6 @@
 #include <stddef.h>
 #include <iostream>
+
 // Definition for singly-linked list.
 struct ListNode {
     int val;
@@ -12,8 +13,8 @@ class Solution1 {
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
         ListNode* ans = new ListNode(-1);
         ListNode* cur = ans;
-        int c = 0;
 
+        int c = 0;
         while (l1 || l2) {
             int a = (l1) ? l1->val : 0;
             int b = (l2) ? l2->val : 0;
@@ -24,7 +25,6 @@ class Solution1 {
             l1 = (l1) ? l1->next : l1;
             l2 = (l2) ? l2->next : l2;
         }
-
         if (c) cur->next = new ListNode(1);
 
         return ans->next;

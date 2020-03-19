@@ -37,8 +37,8 @@ class Solution {
     int lengthOfLongestSubstring(string s) {
         int ans = 0;
         int idx = -1;
-        unordered_map<int, int> hmap;
 
+        unordered_map<int, int> hmap;
         for (int i = 0; i < s.size(); i++) {
             if (hmap.count(s[i]) && (hmap[s[i]] > idx))
                 idx = hmap[s[i]];
