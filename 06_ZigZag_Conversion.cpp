@@ -1,8 +1,9 @@
 #include <iostream>
 #include <string>
+#include <vector>
 using namespace std;
 
-class Solution {
+class Solution1 {
    public:
     string convert(string s, int numRows) {
         if (numRows == 1)
@@ -15,15 +16,68 @@ class Solution {
         string ans = "";
         for (int i = 0; i < numRows; i++) {
             for (int j = 0; j <= loop; j++) {
-                int idx = j * jump + i;
-                if (idx < length)
-                    ans += s[idx];
+                int index = j * jump + i;
+                if (index < length)
+                    ans += s[index];
 
-                idx += jump - 2 * i;
-                if (i > 0 && i < numRows - 1 && idx < length)
-                    ans += s[idx];
+                index += jump - 2 * i;
+                if (i > 0 && i < numRows - 1 && index < length)
+                    ans += s[index];
             }
         }
+
+        return ans;
+    }
+};
+
+class Solution2 {
+   public:
+    string convert(string s, int numRows) {
+        if (numRows == 1)
+            return s;
+
+        int length = s.length();
+        int jump = numRows * 2 - 2;
+
+        string ans = "";
+        for (int i = 0; i < numRows; i++) {
+            for (int j = i; j < length; j += jump) {
+                ans += s[j];
+
+                int index = j + jump - 2 * i;
+                if (i > 0 && i < numRows - 1 && index < length)
+                    ans += s[index];
+            }
+        }
+
+        return ans;
+    }
+};
+
+class Solution {
+   public:
+    string convert(string s, int numRows) {
+        if (numRows == 1)
+            return s;
+
+        int length = s.length();
+        int index = 0;
+        
+        vector<string> v(numRows);
+        while (index < length) {
+            for (int row = 0; row < numRows && index < length; row++) {
+                v[row] += s[index];
+                index++;
+            }
+            for (int row = numRows - 2; row >= 1 && index < length; row--) {
+                v[row] += s[index];
+                index++;
+            }
+        }
+
+        string ans;
+        for (auto& substr : v)
+            ans += substr;
 
         return ans;
     }
