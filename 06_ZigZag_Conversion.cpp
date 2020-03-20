@@ -62,14 +62,14 @@ class Solution {
 
         int length = s.length();
         int index = 0;
-        
+
         vector<string> v(numRows);
         while (index < length) {
             for (int row = 0; row < numRows && index < length; row++) {
                 v[row] += s[index];
                 index++;
             }
-            for (int row = numRows - 2; row >= 1 && index < length; row--) {
+            for (int row = numRows - 2; row > 0 && index < length; row--) {
                 v[row] += s[index];
                 index++;
             }
