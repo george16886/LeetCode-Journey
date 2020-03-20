@@ -31,6 +31,7 @@ class Solution1 {
         }
     }
 };
+
 class Solution2 {
    public:
     string longestPalindrome(string s) {
@@ -91,7 +92,8 @@ class Solution3 {
     }
 };
 
-class Solution {  // Manacher Algorithm
+// Manacher Algorithm
+class Solution {  
    public:
     string longestPalindrome(string s) {
         string t = "$#";  // '$' is prepended to avoid boundary checking.
