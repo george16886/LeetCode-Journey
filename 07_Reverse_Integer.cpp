@@ -4,6 +4,7 @@ class Solution {
    public:
     int reverse(int x) {
         bool neg = false;
+        if (x < -2147483647) return 0;
         if (x < 0) {
             x = -x;
             neg = true;
