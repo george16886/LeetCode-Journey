@@ -5,6 +5,14 @@ using namespace std;
 class Solution {
    public:
     int maxProfit(vector<int>& prices) {
+        int profit = 0;
+        for (int i = 1; i < prices.size(); i++) {
+            int diff = prices[i] - prices[i - 1];
+            if (diff > 0)
+                profit += diff;
+        }
+
+        return profit;
     }
 };
 
@@ -21,7 +29,7 @@ int main(int argc, char** argv) {
     }
     cout << "]" << endl;
     ans = solution.maxProfit(a);
-    cout << "Output: [ " << ans << endl;
+    cout << "Output: " << ans << endl;
 
     cout << "Input: [ ";
     for (const int i : b) {
@@ -29,7 +37,7 @@ int main(int argc, char** argv) {
     }
     cout << "]" << endl;
     ans = solution.maxProfit(b);
-    cout << "Output: [ " << ans << endl;
+    cout << "Output: " << ans << endl;
 
     cout << "Input: [ ";
     for (const int i : c) {
@@ -37,7 +45,7 @@ int main(int argc, char** argv) {
     }
     cout << "]" << endl;
     ans = solution.maxProfit(c);
-    cout << "Output: [ " << ans << endl;
+    cout << "Output: " << ans << endl;
 
     return 0;
 }
