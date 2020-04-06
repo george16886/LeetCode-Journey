@@ -24,25 +24,22 @@ int main(int argc, char** argv) {
     int ans = 0;
 
     cout << "Input: [ ";
-    for (const int i : a) {
+    for (const int i : a)
         std::cout << i << " ";
-    }
     cout << "]" << endl;
     ans = solution.maxProfit(a);
     cout << "Output: " << ans << endl;
 
     cout << "Input: [ ";
-    for (const int i : b) {
+    for (const int i : b)
         std::cout << i << " ";
-    }
     cout << "]" << endl;
     ans = solution.maxProfit(b);
     cout << "Output: " << ans << endl;
 
     cout << "Input: [ ";
-    for (const int i : c) {
+    for (const int i : c)
         std::cout << i << " ";
-    }
     cout << "]" << endl;
     ans = solution.maxProfit(c);
     cout << "Output: " << ans << endl;
