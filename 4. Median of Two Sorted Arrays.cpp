@@ -157,10 +157,8 @@ class Solution {
 
 int main(int argc, char** argv) {
     Solution solution;
-    vector<int> a = {1, 3};
-    vector<int> b = {2};
-    vector<int> c = {1, 2};
-    vector<int> d = {3, 4};
+    vector<int> a = {1, 3}, b = {2};
+    vector<int> c = {1, 2}, d = {3, 4};
 
     double ans = solution.findMedianSortedArrays(a, b);
     cout << "The median is: " << ans << endl;
