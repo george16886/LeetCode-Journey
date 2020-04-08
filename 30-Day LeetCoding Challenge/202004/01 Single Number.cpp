@@ -22,7 +22,7 @@ class Solution1 {
 };
 
 class Solution {
-   public: 
+   public:
     int singleNumber(vector<int>& nums) {
         int ans = 0;
         // for (int i = 0; i < nums.size(); i++) {
@@ -48,6 +48,11 @@ int main(int argc, char** argv) {
     ans = solution.singleNumber(a2);
     cout << "Input: [4, 1, 2, 1, 2]" << endl;
     cout << "Output: " << ans << endl;
+
+    // cout << (4 ^ 1) << endl;
+    // cout << (4 ^ 2) << endl;
+    // cout << (4 ^ 3) << endl;
+    // cout << (4 ^ 4) << endl;
 
     return 0;
 }
