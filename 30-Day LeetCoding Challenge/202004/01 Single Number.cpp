@@ -50,9 +50,9 @@ int main(int argc, char** argv) {
     cout << "Output: " << ans << endl;
 
     // cout << (4 ^ 1) << endl;
-    // cout << (4 ^ 2) << endl;
-    // cout << (4 ^ 3) << endl;
-    // cout << (4 ^ 4) << endl;
+    // cout << (5 ^ 2) << endl;
+    // cout << (7 ^ 1) << endl;
+    // cout << (6 ^ 2) << endl;
 
     return 0;
 }
