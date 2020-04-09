@@ -1,5 +1,4 @@
 #include <stddef.h>
-
 #include <iostream>
 
 // Definition for singly-linked list.
