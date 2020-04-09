@@ -1,4 +1,5 @@
 #include <stddef.h>
+
 #include <iostream>
 
 // Definition for singly-linked list.
@@ -54,6 +55,8 @@ int main(int argc, char** argv) {
     input2->next = input3;
     input3->next = input4;
     input4->next = input5;
+
+    std::cout << "Example 1:" << std::endl;
     printf("Input: ");
     printList(input1);
 
@@ -64,6 +67,8 @@ int main(int argc, char** argv) {
 
     ListNode* input6 = new ListNode(6);
     input5->next = input6;
+    std::cout << std::endl;
+    std::cout << "Example 2:" << std::endl;
     printf("Input: ");
     printList(input1);
 

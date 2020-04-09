@@ -51,6 +51,7 @@
         "typeindex": "cpp",
         "typeinfo": "cpp",
         "random": "cpp",
-        "string": "cpp"
+        "string": "cpp",
+        "unordered_set": "cpp"
     }
 }

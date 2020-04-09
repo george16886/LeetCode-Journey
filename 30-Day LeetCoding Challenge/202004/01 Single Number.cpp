@@ -41,10 +41,13 @@ int main(int argc, char** argv) {
     vector<int> a1 = {2, 2, 1};
     vector<int> a2 = {4, 1, 2, 1, 2};
 
+    cout << "Example 1:" << endl;
     int ans = solution.singleNumber(a1);
     cout << "Input: [2, 2, 1]" << endl;
     cout << "Output: " << ans << endl;
 
+    cout << endl;
+    cout << "Example 2:" << endl;
     ans = solution.singleNumber(a2);
     cout << "Input: [4, 1, 2, 1, 2]" << endl;
     cout << "Output: " << ans << endl;

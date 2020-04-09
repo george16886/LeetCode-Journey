@@ -23,6 +23,7 @@ int main(int argc, char** argv) {
     vector<int> c = {7, 6, 4, 3, 1};
     int ans = 0;
 
+    cout << "Example 1:" << endl;
     cout << "Input: [ ";
     for (const int i : a)
         std::cout << i << " ";
@@ -30,6 +31,8 @@ int main(int argc, char** argv) {
     ans = solution.maxProfit(a);
     cout << "Output: " << ans << endl;
 
+    cout << endl;
+    cout << "Example 2:" << endl;
     cout << "Input: [ ";
     for (const int i : b)
         std::cout << i << " ";
@@ -37,6 +40,8 @@ int main(int argc, char** argv) {
     ans = solution.maxProfit(b);
     cout << "Output: " << ans << endl;
 
+    cout << endl;
+    cout << "Example 3:" << endl;
     cout << "Input: [ ";
     for (const int i : c)
         std::cout << i << " ";
