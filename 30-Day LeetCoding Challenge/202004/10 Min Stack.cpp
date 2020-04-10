@@ -2,6 +2,35 @@
 #include <stack>
 using namespace std;
 
+class MinStack1 {
+   private:
+    stack<int> s;
+    stack<int> sMin;
+
+   public:
+    /** initialize your data structure here. */
+    MinStack1() {
+    }
+
+    void push(int x) {
+        if (sMin.empty() || x <= sMin.top()) sMin.push(x);
+        s.push(x);
+    }
+
+    void pop() {
+        if (s.top() == sMin.top()) sMin.pop();
+        s.pop();
+    }
+
+    int top() {
+        return s.top();
+    }
+
+    int getMin() {
+        return sMin.top();
+    }
+};
+
 class MinStack {
    private:
     stack<int> s;
