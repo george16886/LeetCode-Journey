@@ -2,81 +2,40 @@
 #include <stack>
 using namespace std;
 
-class MinStack {
-   private:
-    stack<int> s;
-    int min;
+// Definition for a binary tree node.
+struct TreeNode {
+    int val;
+    TreeNode* left;
+    TreeNode* right;
+    TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+};
 
+class Solution {
    public:
-    /** initialize your data structure here. */
-    MinStack() {
-        min = INT32_MAX;
-    }
+    int diameterOfBinaryTree(TreeNode* root) {
 
-    void push(int x) {
-        if (x <= min) {
-            s.push(min);
-            min = x;
-        }
-        s.push(x);
-    }
-
-    void pop() {
-        int top = s.top();
-        s.pop();
-        if (top == min) {
-            min = s.top();
-            s.pop();
-        }
-    }
-
-    int top() {
-        return s.top();
-    }
-
-    int getMin() {
-        return min;
+        
+        return root->left->val;
     }
 };
 
-/**
- * Your MinStack object will be instantiated and called as such:
- * MinStack* obj = new MinStack();
- * obj->push(x);
- * obj->pop();
- * int param_3 = obj->top();
- * int param_4 = obj->getMin();
- */
-
 int main(int argc, char** argv) {
-    MinStack* obj = new MinStack();
-    cout << "MinStack* obj = new MinStack();" << endl;
-    obj->push(-2);
-    obj->push(0);
-    obj->push(-3);
-    int param_4 = obj->getMin();
-    cout << "MinStack->push(-2);" << endl;
-    cout << "MinStack->push(0);" << endl;
-    cout << "MinStack->push(-3);" << endl;
-    cout << "MinStack->getMin();\t";
-    cout << "--> Returns " << param_4 << "." << endl;
-    obj->pop();
-    cout << "MinStack->pop()" << endl;
-    int param_3 = obj->top();
-    cout << "MinStack->top();\t";
-    cout << "--> Returns " << param_3 << "." << endl;
-    param_4 = obj->getMin();
-    cout << "MinStack->getMin();\t";
-    cout << "--> Returns " << param_4 << "." << endl;
+    Solution solution;
 
-    MinStack* obj2 = new MinStack();
-    cout << endl;
-    obj2->push(0);
-    obj2->push(1);
-    obj2->push(0);
-    cout << obj2->getMin() << endl;
-    obj2->pop();
-    cout << obj2->getMin() << endl;
+    // Make the nodes
+    TreeNode root(1);
+    TreeNode leftChild(2);
+    TreeNode leftChild4(4);
+    TreeNode leftChild5(5);
+    TreeNode rightChild(3);
+
+    // Connect nodes
+    leftChild.left = &leftChild4;
+    leftChild.right = &leftChild5;
+    root.left = &leftChild;
+    root.right = &rightChild;
+
+    cout << "Output: " << solution.diameterOfBinaryTree(&root) << endl;;
 
     return 0;
 }
