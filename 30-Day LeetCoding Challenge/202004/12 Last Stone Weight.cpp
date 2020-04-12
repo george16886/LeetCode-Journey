@@ -3,29 +3,37 @@
 #include <vector>
 using namespace std;
 
+class Solution1 {
+   public:
+    int lastStoneWeight(vector<int>& stones) {
+        while (stones.size() > 1) {
+            sort(stones.begin(), stones.end());
+            int diff = stones[stones.size() - 1] - stones[stones.size() - 2];
+            stones.erase(stones.end() - 2, stones.end());
+
+            if (diff)
+                stones.push_back(diff);
+        }
+
+        return (stones.size()) ? stones[0] : 0;
+    }
+};
+
 class Solution {
    public:
     int lastStoneWeight(vector<int>& stones) {
         while (stones.size() > 1) {
             sort(stones.begin(), stones.end());
-            int max1 = stones[stones.size() - 1];
-            int max2 = stones[stones.size() - 2];
-            int diff = max1 - max2;
+            int max = stones[stones.size() - 1];
+            stones.pop_back();
+            int diff = max - stones[stones.size() - 1];
+            stones.pop_back();
 
-            if (diff) {
-                stones.pop_back();
-                stones.pop_back();
+            if (diff)
                 stones.push_back(diff);
-            } else {
-                stones.pop_back();
-                stones.pop_back();
-            }
         }
 
-        if (stones.size() == 1)
-            return stones[0];
-        else
-            return 0;
+        return (stones.size()) ? stones[0] : 0;
     }
 };
 
