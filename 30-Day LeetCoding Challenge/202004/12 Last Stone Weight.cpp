@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <iostream>
+#include <queue>
 #include <vector>
 using namespace std;
 
@@ -19,7 +20,7 @@ class Solution1 {
     }
 };
 
-class Solution {
+class Solution2 {
    public:
     int lastStoneWeight(vector<int>& stones) {
         while (stones.size() > 1) {
@@ -34,6 +35,25 @@ class Solution {
         }
 
         return (stones.size()) ? stones[0] : 0;
+    }
+};
+
+class Solution {
+   public:
+    int lastStoneWeight(vector<int>& stones) {
+        priority_queue<int> priority_q;
+        for (int stone : stones) priority_q.push(stone);
+
+        while (priority_q.size() > 1) {
+            int max1 = priority_q.top();
+            priority_q.pop();
+            int max2 = priority_q.top();
+            priority_q.pop();
+            int v = abs(max1 - max2);
+            if (v) priority_q.push(v);
+        }
+
+        return (priority_q.size()) ? priority_q.top() : 0;
     }
 };
 
