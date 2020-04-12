@@ -38,7 +38,7 @@ class Solution2 {
     }
 };
 
-class Solution {
+class Solution3 {
    public:
     int lastStoneWeight(vector<int>& stones) {
         priority_queue<int> priority_q;
@@ -51,6 +51,23 @@ class Solution {
             priority_q.pop();
             int v = abs(max1 - max2);
             if (v) priority_q.push(v);
+        }
+
+        return (priority_q.size()) ? priority_q.top() : 0;
+    }
+};
+
+class Solution {
+   public:
+    int lastStoneWeight(vector<int>& stones) {
+        priority_queue<int> priority_q(begin(stones), end(stones));
+
+        while (priority_q.size() > 1) {
+            int max1 = priority_q.top();
+            priority_q.pop();
+            int max2 = priority_q.top();
+            priority_q.pop();
+            if (max1 - max2) priority_q.push(max1 - max2);
         }
 
         return (priority_q.size()) ? priority_q.top() : 0;
