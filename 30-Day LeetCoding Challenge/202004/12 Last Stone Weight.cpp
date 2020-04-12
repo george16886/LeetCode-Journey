@@ -32,8 +32,7 @@ class Solution {
 int main(int argc, char** argv) {
     Solution solution;
 
-    // vector<int> input = {2, 7, 4, 1, 8, 1};
-    vector<int> input = {3, 7, 2};
+    vector<int> input = {2, 7, 4, 1, 8, 1};
 
     cout << "Input: [ ";
     for (const int i : input) {
