@@ -9,37 +9,37 @@ struct TreeNode {
     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
 };
 
-class Solution {
+class Solution1 {
    private:
     int diameter;
 
    public:
     int diameterOfBinaryTree(TreeNode* root) {
-        updateDiameter(root);
+        maxDepth(root);
         return diameter;
     }
-    int updateDiameter(TreeNode* node) {
+    int maxDepth(TreeNode* node) {
         if (!node) return 0;
-        int left = updateDiameter(node->left);
-        int right = updateDiameter(node->right);
+        int left = maxDepth(node->left);
+        int right = maxDepth(node->right);
         diameter = max(diameter, left + right);
         return max(left, right) + 1;
     }
 };
 
-class Solution1 {
+class Solution {
    public:
     int diameterOfBinaryTree(TreeNode* root) {
         int diameter = 0;
-        updateDiameter(root, diameter);
+        maxDepth(root, diameter);
         return diameter;
     }
 
-    int updateDiameter(TreeNode* node, int& diameter) {
+    int maxDepth(TreeNode* node, int& diameter) {
         if (!node) return 0;
 
-        int left = updateDiameter(node->left, diameter);
-        int right = updateDiameter(node->right, diameter);
+        int left = maxDepth(node->left, diameter);
+        int right = maxDepth(node->right, diameter);
         diameter = max(diameter, left + right);
 
         return max(left, right) + 1;
