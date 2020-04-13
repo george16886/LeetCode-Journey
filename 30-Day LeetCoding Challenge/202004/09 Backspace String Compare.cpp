@@ -5,7 +5,7 @@ using namespace std;
 class Solution1 {
    public:
     bool backspaceCompare(string S, string T) {
-        string s = "", t = "";
+        string s = "";
         for (char c : S)
             if (c == '#') {
                 if (s.size())
@@ -13,6 +13,7 @@ class Solution1 {
             } else
                 s.push_back(c);
 
+        string t = "";
         for (char c : T)
             if (c == '#') {
                 if (t.size())
@@ -30,7 +31,8 @@ class Solution2 {
         string s = "", t = "";
         for (char c : S) (c == '#') ? (s.size() > 0) ? s.pop_back() : void() : s.push_back(c);
         for (char c : T) (c == '#') ? (t.size() > 0) ? t.pop_back() : void() : t.push_back(c);
-        return s == t;
+
+        return (s == t);
     }
 };
 
