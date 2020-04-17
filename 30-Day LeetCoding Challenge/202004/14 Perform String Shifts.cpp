@@ -53,7 +53,8 @@ int main(int argc, char** argv) {
             cout << i << " ";
         cout << "] ";
     }
-    cout << "}\n Output: \"" << solution.stringShift(s, shift) << "\"" << endl;
+    cout << "}\nOutput: \"" << solution.stringShift(s, shift) << "\"\n"
+         << endl;
 
     s = "abcdefg";
     shift = {{1, 1}, {1, 1}, {0, 2}, {1, 3}};
@@ -64,7 +65,8 @@ int main(int argc, char** argv) {
             cout << i << " ";
         cout << "] ";
     }
-    cout << "}\n Output: \"" << solution.stringShift(s, shift) << "\"" << endl;
+    cout << "}\nOutput: \"" << solution.stringShift(s, shift) << "\"\n"
+         << endl;
 
     return 0;
 }

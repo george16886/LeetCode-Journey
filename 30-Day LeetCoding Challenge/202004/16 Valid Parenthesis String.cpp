@@ -2,11 +2,10 @@
 #include <stack>
 using namespace std;
 
-class Solution {
+class Solution1 {
    public:
     bool checkValidString(string s) {
-        stack<int> left;
-        stack<int> star;
+        stack<int> left, star;
         for (int i = 0; i < s.size(); i++) {
             if (s[i] == '(')
                 left.push(i);
@@ -32,6 +31,29 @@ class Solution {
         }
 
         return left.empty();
+    }
+};
+
+class Solution {
+   public:
+    bool checkValidString(string s) {
+        int left = 0, right = 0;
+        for (int i = 0; i < s.size(); i++) {
+            if (s[i] == '(' || s[i] == '*')
+                left++;
+            else
+                left--;
+
+            int j = s.size() - 1 - i;
+            if (s[j] == ')' || s[j] == '*')
+                right++;
+            else
+                right--;
+
+            if (left < 0 || right < 0)
+                return false;
+        }
+        return true;
     }
 };
 
