@@ -63,7 +63,6 @@ int main(int argc, char** argv) {
     root.right = &rightChild;
 
     cout << "Output: " << solution.diameterOfBinaryTree(&root) << endl;
-    ;
 
     return 0;
 }
