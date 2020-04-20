@@ -15,8 +15,7 @@ class Solution1 {
 class Solution {
    public:
     int search(vector<int>& nums, int target) {
-        int startIdx;
-        int left = nums[0], right = nums[nums.size() - 1];
+        int left = 0, right = nums.size() - 1;
         while (left <= right) {
             int mid = left + (right - left) / 2;
             if (nums[mid] == target) return mid;
