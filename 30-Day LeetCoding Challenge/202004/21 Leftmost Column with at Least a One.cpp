@@ -30,6 +30,46 @@ class BinaryMatrix {
     };
 };
 
+class Solution1 {
+   public:
+    int leftMostColumnWithOne(BinaryMatrix& binaryMatrix) {
+        int rows = binaryMatrix.dimensions()[0];
+        int cols = binaryMatrix.dimensions()[1];
+
+        int ans = cols - 1;
+        for (int row = 0; row < rows; row++)
+            if (binaryMatrix.get(row, ans)) {
+                while (ans > 0) {
+                    if (!binaryMatrix.get(row, ans - 1))
+                        break;
+
+                    ans--;
+                }
+            } else if ((row == rows - 1) && (ans == cols - 1))
+                return -1;
+
+        return ans;
+    }
+};
+
+class Solution2 {
+   public:
+    int leftMostColumnWithOne(BinaryMatrix& binaryMatrix) {
+        int rows = binaryMatrix.dimensions()[0];
+        int cols = binaryMatrix.dimensions()[1];
+
+        int ans = cols - 1;
+        for (int row = 0; row < rows; row++)
+            if (binaryMatrix.get(row, ans))
+                while (ans > 0 && binaryMatrix.get(row, ans - 1))
+                    ans--;
+            else if ((row == rows - 1) && (ans == cols - 1))
+                return -1;
+
+        return ans;
+    }
+};
+
 class Solution {
    public:
     int leftMostColumnWithOne(BinaryMatrix& binaryMatrix) {
@@ -37,19 +77,14 @@ class Solution {
         int cols = binaryMatrix.dimensions()[1];
 
         int ans = cols - 1;
-        for (int row = 0; row < rows; row++) 
-            if (binaryMatrix.get(row, ans)) {
-                for (int col = ans; col >= 0; col--) {
-                    if (!ans)
-                        return 0;
-                    if (!binaryMatrix.get(row, ans - 1))
-                        break;
-                    ans--;
-                }
-            } else if ((row == rows - 1) && (ans == cols - 1))
-                return -1;
+        for (int row = 0; row < rows; row++)
+            while (ans >= 0 && binaryMatrix.get(row, ans))
+                ans--;
 
-        return ans;
+        if (ans == cols - 1)
+            return -1;
+
+        return ans + 1;
     }
 };
 
