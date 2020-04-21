@@ -11,27 +11,66 @@ struct TreeNode {
     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
 };
 
-class Solution {
+class Solution1 {
    public:
     TreeNode* bstFromPreorder(vector<int>& preorder) {
-        
+        return bstFromPreorder(preorder, 0, preorder.size() - 1);
+    }
+
+    TreeNode* bstFromPreorder(vector<int>& preorder, int start, int end) {
+        if (start > end) return NULL;
+
+        int left = start + 1, right = start + 1;
+        while (right <= end) {
+            if (preorder[right] > preorder[start])
+                break;
+            right++;
+        }
+
+        TreeNode* root = new TreeNode(preorder[start]);
+        root->left = bstFromPreorder(preorder, left, right - 1);
+        root->right = bstFromPreorder(preorder, right, end);
+
+        return root;
     }
 };
 
-// Level-order traversal
+class Solution {
+   public:
+    TreeNode* bstFromPreorder(vector<int>& preorder) {
+        int n = preorder.size();
+        if (!n) return NULL;
+
+        vector<int> left, right;
+        TreeNode* root = new TreeNode(preorder[0]);
+
+        for (int i = 1; i < n; i++)
+            if (preorder[i] > root->val)
+                right.push_back(preorder[i]);
+            else
+                left.push_back(preorder[i]);
+
+        root->left = bstFromPreorder(left);
+        root->right = bstFromPreorder(right);
+
+        return root;
+    }
+};
+
+// Function to print a tree by level-order traversal
 void levelOrderTraversal(TreeNode* root) {
     queue<TreeNode*> q;
-    q.push(root);  // 把root作為level-order traversal之起點推進queue中
+    q.push(root);
 
-    while (!q.empty()) {                // 若queue不是空的, 表示還有node沒有visiting
-        TreeNode* current = q.front();  // 取出先進入queue的node
+    while (!q.empty()) {
+        TreeNode* current = q.front();
         q.pop();
-        cout << current->val << " ";  // 進行visiting
+        cout << current->val << " ";
 
-        if (current->left != NULL)  // 若leftchild有資料, 將其推進queue
+        if (current->left != NULL)
             q.push(current->left);
 
-        if (current->right != NULL)  // 若rightchild有資料, 將其推進queue
+        if (current->right != NULL)
             q.push(current->right);
     }
 }
@@ -45,7 +84,6 @@ int main(int argc, char** argv) {
         cout << i << " ";
     cout << "]" << endl;
     TreeNode* output = solution.bstFromPreorder(input);
-
     cout << "Output: [ ";
     levelOrderTraversal(output);
     cout << "]" << endl;
