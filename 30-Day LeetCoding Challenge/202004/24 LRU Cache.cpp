@@ -15,27 +15,23 @@ class LRUCache {
     }
 
     int get(int key) {
-        keyList.remove(1);
-        keyList.push_front(key);
-        cout << "list back " << keyList.back() << endl;
+        keyList.push_front(keyList.back());
+        keyList.pop_back();
         return (hmap[key]) ? hmap[key] : -1;
     }
 
     void put(int key, int value) {
-        hmap[key] = value;
-        cout << "put (" << key << ", " << value << ") ";
         if (keyList.size() == cap) {
-            hmap[keyList.back()] = 0;
-            cout << "list back " << keyList.back() << endl;
             keyList.pop_back();
             keyList.push_front(key);
         } else {
             keyList.push_front(key);
-            cout << endl;
         }
+        
+        hmap[key] = value;
 
-        // cout << "list front " << keyList.front() << endl;
-        // cout << "list back " << keyList.back() << endl;
+        cout << "list front " << keyList.front() << endl;
+        cout << "list back " << keyList.back() << endl;
     }
 };
 
