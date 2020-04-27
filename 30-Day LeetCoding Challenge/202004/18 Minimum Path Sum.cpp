@@ -14,9 +14,11 @@ class Solution1 {
         for (int col = 1; col < cols; col++)
             ans[0][col] = ans[0][col - 1] + grid[0][col];
 
-        for (int row = 1; row < rows; row++)
-            for (int col = 1; col < cols; col++)
+        for (int row = 1; row < rows; row++) {
+            for (int col = 1; col < cols; col++) {
                 ans[row][col] = min(ans[row - 1][col], ans[row][col - 1]) + grid[row][col];
+            }
+        }
 
         return ans[rows - 1][cols - 1];
     }
@@ -29,7 +31,7 @@ class Solution2 {
         int cols = grid[0].size();
 
         vector<vector<int>> ans = grid;
-        for (int row = 0; row < rows; row++)
+        for (int row = 0; row < rows; row++) {
             for (int col = 0; col < cols; col++) {
                 if (row > 0 && !col)
                     ans[row][0] = ans[row - 1][0] + grid[row][0];
@@ -38,6 +40,7 @@ class Solution2 {
                 else if (row > 0 && col > 0)
                     ans[row][col] = min(ans[row - 1][col], ans[row][col - 1]) + grid[row][col];
             }
+        }
 
         return ans[rows - 1][cols - 1];
     }
@@ -49,7 +52,7 @@ class Solution {
         int rows = grid.size();
         int cols = grid[0].size();
 
-        for (int row = 0; row < rows; row++)
+        for (int row = 0; row < rows; row++) {
             for (int col = 0; col < cols; col++) {
                 if (row > 0 && !col)
                     grid[row][0] = grid[row - 1][0] + grid[row][0];
@@ -58,6 +61,7 @@ class Solution {
                 else if (row > 0 && col > 0)
                     grid[row][col] = min(grid[row - 1][col], grid[row][col - 1]) + grid[row][col];
             }
+        }
 
         return grid[rows - 1][cols - 1];
     }

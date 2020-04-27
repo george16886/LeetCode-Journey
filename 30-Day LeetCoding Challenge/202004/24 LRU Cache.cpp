@@ -21,9 +21,8 @@ class LRUCache {
     }
 
     void put(int key, int value) {
-        if (hmap.count(key)) {
+        if (hmap.count(key)) 
             operationList.erase(hmap.find(key)->second);
-        }
 
         if (operationList.size() == cap) {
             int k = operationList.rbegin()->first;

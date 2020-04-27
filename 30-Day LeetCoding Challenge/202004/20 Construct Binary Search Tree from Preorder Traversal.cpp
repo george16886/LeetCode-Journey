@@ -44,11 +44,12 @@ class Solution {
         vector<int> left, right;
         TreeNode* root = new TreeNode(preorder[0]);
 
-        for (int i = 1; i < n; i++)
+        for (int i = 1; i < n; i++) {
             if (preorder[i] > root->val)
                 right.push_back(preorder[i]);
             else
                 left.push_back(preorder[i]);
+        }
 
         root->left = bstFromPreorder(left);
         root->right = bstFromPreorder(right);

@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
-#include <vector>
 #include <unordered_map>
+#include <vector>
 using namespace std;
 
 class Solution {
@@ -17,11 +17,12 @@ class Solution {
                 // cout << c << ": " << c - 'a' << endl;
             }
 
-            for (int i = 0; i < 26; ++i)
+            for (int i = 0; i < 26; ++i) {
                 if (count[i]) {
                     // category += to_string(count[i]) + string(1, i + 'a');
                     category += to_string(count[i]) + to_string(i);
                 }
+            }
             // cout << category << endl;
 
             hmap[category].push_back(str);

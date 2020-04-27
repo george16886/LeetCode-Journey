@@ -37,7 +37,7 @@ class Solution1 {
         int cols = binaryMatrix.dimensions()[1];
 
         int ans = cols - 1;
-        for (int row = 0; row < rows; row++)
+        for (int row = 0; row < rows; row++) {
             if (binaryMatrix.get(row, ans)) {
                 while (ans > 0) {
                     if (!binaryMatrix.get(row, ans - 1))
@@ -47,6 +47,7 @@ class Solution1 {
                 }
             } else if ((row == rows - 1) && (ans == cols - 1))
                 return -1;
+        }
 
         return ans;
     }
@@ -59,12 +60,13 @@ class Solution2 {
         int cols = binaryMatrix.dimensions()[1];
 
         int ans = cols - 1;
-        for (int row = 0; row < rows; row++)
+        for (int row = 0; row < rows; row++) {
             if (binaryMatrix.get(row, ans))
                 while (ans > 0 && binaryMatrix.get(row, ans - 1))
                     ans--;
             else if ((row == rows - 1) && (ans == cols - 1))
                 return -1;
+        }
 
         return ans;
     }
@@ -77,9 +79,10 @@ class Solution {
         int cols = binaryMatrix.dimensions()[1];
 
         int ans = cols - 1;
-        for (int row = 0; row < rows; row++)
+        for (int row = 0; row < rows; row++) {
             while (ans >= 0 && binaryMatrix.get(row, ans))
                 ans--;
+        }
 
         if (ans == cols - 1)
             return -1;

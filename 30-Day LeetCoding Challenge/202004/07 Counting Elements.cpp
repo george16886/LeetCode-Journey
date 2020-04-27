@@ -7,13 +7,15 @@ class Solution {
    public:
     int countElements(vector<int>& arr) {
         unordered_map<int, int> hmap;
-        for (const int i : arr) 
+        for (const int i : arr) {
             hmap[i]++;
+        }
 
         int ans = 0;
-        for (const int i : arr) 
+        for (const int i : arr) {
             if (hmap.count(i + 1))
                 ans += hmap.count(i);
+        }
 
         return ans;
     }

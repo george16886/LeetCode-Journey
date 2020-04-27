@@ -6,20 +6,22 @@ class Solution1 {
    public:
     bool backspaceCompare(string S, string T) {
         string s = "";
-        for (char c : S)
+        for (char c : S) {
             if (c == '#') {
                 if (s.size())
                     s.pop_back();
             } else
                 s.push_back(c);
+        }
 
         string t = "";
-        for (char c : T)
+        for (char c : T) {
             if (c == '#') {
                 if (t.size())
                     t.pop_back();
             } else
                 t.push_back(c);
+        }
 
         return (s == t);
     }
@@ -29,8 +31,12 @@ class Solution2 {
    public:
     bool backspaceCompare(string S, string T) {
         string s = "", t = "";
-        for (char c : S) (c == '#') ? (s.size() > 0) ? s.pop_back() : void() : s.push_back(c);
-        for (char c : T) (c == '#') ? (t.size() > 0) ? t.pop_back() : void() : t.push_back(c);
+        for (char c : S) {
+            (c == '#') ? (s.size() > 0) ? s.pop_back() : void() : s.push_back(c);
+        }
+        for (char c : T) {
+            (c == '#') ? (t.size() > 0) ? t.pop_back() : void() : t.push_back(c);
+        }
 
         return (s == t);
     }

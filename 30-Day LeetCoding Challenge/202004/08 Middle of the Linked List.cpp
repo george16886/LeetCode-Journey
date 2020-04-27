@@ -21,8 +21,9 @@ class Solution {
         }
         // printf(" with count = %d", count);
 
-        for (int i = 0; i < count / 2; i++)
+        for (int i = 0; i < count / 2; i++) {
             tmp = tmp->next;
+        }
 
         return tmp;
     }

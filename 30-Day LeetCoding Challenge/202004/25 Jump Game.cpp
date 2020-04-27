@@ -8,9 +8,10 @@ class Solution1 {
         int n = nums.size();
 
         int maxJump = 0;
-        for (int i = 0; i < n; i++)
+        for (int i = 0; i < n; i++) {
             if (i <= maxJump)
                 maxJump = max(nums[i] + i, maxJump);
+        }
 
         return (maxJump >= n - 1);
     }
