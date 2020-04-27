@@ -6,8 +6,8 @@ using namespace std;
 class LRUCache {
    private:
     int cap;
-    unordered_map<int, int> hmap;
-    list<int> keyList;
+    list<pair<int, int>> operationList;
+    unordered_map<int, list<pair<int, int>>::iterator> hmap;
 
    public:
     LRUCache(int capacity) {
@@ -15,27 +15,24 @@ class LRUCache {
     }
 
     int get(int key) {
-        keyList.remove(1);
-        keyList.push_front(key);
-        cout << "list back " << keyList.back() << endl;
-        return (hmap[key]) ? hmap[key] : -1;
+        if (!hmap.count(key)) return -1;
+        operationList.splice(operationList.begin(), operationList, hmap.find(key)->second);
+        return hmap.find(key)->second->second;
     }
 
     void put(int key, int value) {
-        hmap[key] = value;
-        cout << "put (" << key << ", " << value << ") ";
-        if (keyList.size() == cap) {
-            hmap[keyList.back()] = 0;
-            cout << "list back " << keyList.back() << endl;
-            keyList.pop_back();
-            keyList.push_front(key);
-        } else {
-            keyList.push_front(key);
-            cout << endl;
+        if (hmap.count(key)) {
+            operationList.erase(hmap.find(key)->second);
         }
 
-        // cout << "list front " << keyList.front() << endl;
-        // cout << "list back " << keyList.back() << endl;
+        if (operationList.size() == cap) {
+            int k = operationList.rbegin()->first;
+            hmap.erase(k);
+            operationList.pop_back();
+        }   
+
+        operationList.push_front(make_pair(key, value));
+        hmap[key] = operationList.begin();
     }
 };
 
@@ -62,7 +59,32 @@ int main(int argc, char** argv) {
     cache->get(3);  // returns 3
     cout << cache->get(3) << endl;
     cache->get(4);  // returns 4
-    cout << cache->get(4) << endl;
+    cout << cache->get(4) << endl << endl;
+
+    LRUCache* cache2 = new LRUCache(2 /* capacity */);
+    cache2->get(2);
+    cout << cache2->get(2) << endl;
+    cache2->put(2, 6);
+    cache2->get(1);
+    cout << cache2->get(1) << endl;
+    cache2->put(1, 5);
+    cache2->put(1, 2);
+    cache2->get(1);
+    cout << cache2->get(1) << endl;
+    cache2->get(2);
+    cout << cache2->get(2) << endl
+         << endl;
+
+    LRUCache* cache3 = new LRUCache(2 /* capacity */);
+    cache3->put(2, 1);
+    cache3->put(1, 1);
+    cache3->put(2, 3);
+    cache3->put(4, 1);
+    cache3->get(1);
+    cout << cache3->get(1) << endl;
+    cache3->get(2);
+    cout << cache3->get(2) << endl
+         << endl;
 
     return 0;
 }
