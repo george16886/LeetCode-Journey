@@ -2,7 +2,7 @@
 #include <vector>
 using namespace std;
 
-class Solution {
+class Solution1 {
    public:
     int maximalSquare(vector<vector<char>>& matrix) {
         if (!matrix.size()) return 0;
@@ -23,7 +23,6 @@ class Solution {
     }
 
     bool squareCheck(vector<vector<char>>& matrix, int x, int y, int length) {
-        int cnt = 0;
         for (int i = 0; i < length; i++) {
             for (int j = 0; j < length; j++) {
                 if (matrix[y + j][x + i] == '0')
@@ -32,6 +31,30 @@ class Solution {
         }
 
         return true;
+    }
+};
+
+class Solution {
+   public:
+    int maximalSquare(vector<vector<char>>& matrix) {
+        if (matrix.empty()) return 0;
+        int rows = matrix.size();
+        int cols = matrix[0].size();
+        int maxLength = 0;
+
+        vector<vector<int>> dp(rows, vector<int>(cols));
+        for (int row = 0; row < rows; row++) {
+            for (int col = 0; col < cols; col++) {
+                if (!row || !col)
+                    dp[row][col] = (matrix[row][col] == '1') ? 1 : 0;
+                else if (matrix[row][col] == '1')
+                    dp[row][col] = min(dp[row - 1][col - 1], min(dp[row][col - 1], dp[row - 1][col])) + 1;
+
+                maxLength = max(maxLength, dp[row][col]);
+            }
+        }
+
+        return maxLength * maxLength;
     }
 };
 
