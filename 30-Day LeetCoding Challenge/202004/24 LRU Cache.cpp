@@ -16,8 +16,10 @@ class LRUCache {
 
     int get(int key) {
         if (!hmap.count(key)) return -1;
-        operationList.splice(operationList.begin(), operationList, hmap.find(key)->second);
-        return hmap.find(key)->second->second;
+        
+        auto operation = hmap.find(key)->second;
+        operationList.splice(operationList.begin(), operationList, operation);
+        return operation->second;
     }
 
     void put(int key, int value) {

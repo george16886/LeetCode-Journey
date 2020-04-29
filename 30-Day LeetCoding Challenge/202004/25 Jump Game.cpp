@@ -17,7 +17,7 @@ class Solution1 {
     }
 };
 
-class Solution {
+class Solution3 {
    public:
     bool canJump(vector<int>& nums) {
         int n = nums.size();
@@ -29,6 +29,23 @@ class Solution {
         }
 
         return true;
+    }
+};
+
+class Solution {
+   public:
+    bool canJump(vector<int>& nums) {
+        int n = nums.size();
+
+        int maxJump = 0;
+        for (int i = 0; i < n; i++) {
+            if (maxJump >= n - 1)
+                return true;
+            if (i <= maxJump)
+                maxJump = max(nums[i] + i, maxJump);
+        }
+
+        return (maxJump >= n - 1);
     }
 };
 

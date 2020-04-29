@@ -18,6 +18,7 @@ class Solution1 {
         maxDepth(root);
         return diameter;
     }
+    
     int maxDepth(TreeNode* node) {
         if (!node) return 0;
         int left = maxDepth(node->left);
