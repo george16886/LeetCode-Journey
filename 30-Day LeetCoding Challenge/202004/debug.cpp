@@ -90,7 +90,7 @@ public:
                 list<int>::iterator p = map[value];
                 uniqueNumbers.erase(p);
                 auto map_iter = map.find(value);
-                map.erase(map_iter);
+                map.erase(value);
             }
         } else {
             set.insert(value);

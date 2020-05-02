@@ -90,7 +90,7 @@ class FirstUnique {
             if (map_iter != hmap.end()) {
                 list<int>::iterator list_iter = hmap[value];
                 l.erase(list_iter);
-                hmap.erase(map_iter);
+                hmap.erase(map_iter);  // map.erase(value);
             }
         } else {
             set.insert(value);
