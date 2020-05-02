@@ -31,13 +31,13 @@ class FirstUnique1 {
     }
 };
 
-class FirstUnique {
+class FirstUnique2 {
    private:
     list<int> l;
     unordered_map<int, int> hmap;
 
    public:
-    FirstUnique(vector<int>& nums) {
+    FirstUnique2(vector<int>& nums) {
         for (int i : nums) {
             if (!hmap[i])
                 l.push_back(i);
@@ -63,6 +63,41 @@ class FirstUnique {
             l.push_back(value);
 
         hmap[value]++;
+    }
+};
+
+class FirstUnique {
+   private:
+    list<int> l;
+    unordered_map<int, bool> hmap;
+
+   public:
+    FirstUnique(vector<int>& nums) {
+        for (auto i : nums) {
+            if (hmap.find(i) == hmap.end()) {
+                l.push_back(i);
+                hmap[i] = true;
+            } else 
+                hmap[i] = false;
+        }
+    }
+
+    int showFirstUnique() {
+        for (auto it : l) {
+            if (hmap[it] == true) {
+                return it;
+            }
+        }
+        return -1;
+    }
+
+    void add(int value) {
+        if (hmap.find(value) == hmap.end()) {
+            l.push_back(value);
+            hmap[value] = true;
+        } else {
+            hmap[value] = false;
+        }
     }
 };
 
@@ -111,15 +146,15 @@ int main(int argc, char** argv) {
     cout << firstUnique3.showFirstUnique() << endl;
     cout << endl;
 
-    nums = {1, 2, 3};
+    nums = {2, 3, 5};
     FirstUnique firstUnique4 = FirstUnique(nums);
-    firstUnique4.showFirstUnique();  
+    firstUnique4.showFirstUnique();
     cout << firstUnique4.showFirstUnique() << endl;
-    firstUnique4.add(2);           
-    firstUnique4.showFirstUnique();  
+    firstUnique4.add(3);
+    firstUnique4.showFirstUnique();
     cout << firstUnique4.showFirstUnique() << endl;
-    firstUnique4.add(1);           
-    firstUnique4.showFirstUnique();  
+    firstUnique4.add(2);
+    firstUnique4.showFirstUnique();
     cout << firstUnique4.showFirstUnique() << endl;
     cout << endl;
 
