@@ -69,9 +69,9 @@ class FirstUnique2 {
 
 class FirstUnique {
    private:
-    list<int> uniqueNumbers;
     unordered_set<int> set;
-    unordered_map<int, list<int>::iterator> map;
+    list<int> uniqueNumbers;
+    unordered_map<int, list<int>::iterator> hmap;
 
    public:
     FirstUnique(vector<int>& nums) {
@@ -81,22 +81,24 @@ class FirstUnique {
     }
 
     int showFirstUnique() {
-        if (uniqueNumbers.empty()) return -1;
-        return uniqueNumbers.front();
+        if (!uniqueNumbers.empty())
+            return uniqueNumbers.front();
+        else
+            return -1;
     }
 
     void add(int value) {
-        if (set.find(value) != set.end()) {  
-            if (map.find(value) != map.end()) {
-                list<int>::iterator p = map[value];
-                uniqueNumbers.erase(p);
-                auto map_iter = map.find(value);
-                map.erase(map_iter);
+        if (set.find(value) != set.end()) {
+            auto map_iter = hmap.find(value);
+            if (map_iter != hmap.end()) {
+                list<int>::iterator list_iter = hmap[value];
+                uniqueNumbers.erase(list_iter);
+                hmap.erase(map_iter);
             }
         } else {
             set.insert(value);
             uniqueNumbers.push_back(value);
-            map[value] = prev(uniqueNumbers.end());
+            hmap[value] = --uniqueNumbers.end();  // prev(uniqueNumbers.end());
         }
     }
 };
