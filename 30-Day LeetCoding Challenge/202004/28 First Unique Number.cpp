@@ -77,17 +77,17 @@ class FirstUnique {
             if (hmap.find(i) == hmap.end()) {
                 l.push_back(i);
                 hmap[i] = true;
-            } else 
+            } else
                 hmap[i] = false;
         }
     }
 
     int showFirstUnique() {
         for (auto it : l) {
-            if (hmap[it] == true) {
+            if (hmap[it] == true)
                 return it;
-            }
         }
+
         return -1;
     }
 
@@ -95,9 +95,8 @@ class FirstUnique {
         if (hmap.find(value) == hmap.end()) {
             l.push_back(value);
             hmap[value] = true;
-        } else {
+        } else
             hmap[value] = false;
-        }
     }
 };
 
