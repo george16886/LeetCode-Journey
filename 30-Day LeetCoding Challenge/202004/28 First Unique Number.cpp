@@ -83,9 +83,9 @@ class FirstUnique {
     }
 
     int showFirstUnique() {
-        for (auto it : l) {
-            if (hmap[it] == true)
-                return it;
+        for (auto i : l) {
+            if (hmap[i] == true)
+                return i;
         }
 
         return -1;
