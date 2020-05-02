@@ -111,5 +111,17 @@ int main(int argc, char** argv) {
     cout << firstUnique3.showFirstUnique() << endl;
     cout << endl;
 
+    nums = {1, 2, 3};
+    FirstUnique firstUnique4 = FirstUnique(nums);
+    firstUnique4.showFirstUnique();  
+    cout << firstUnique4.showFirstUnique() << endl;
+    firstUnique4.add(2);           
+    firstUnique4.showFirstUnique();  
+    cout << firstUnique4.showFirstUnique() << endl;
+    firstUnique4.add(1);           
+    firstUnique4.showFirstUnique();  
+    cout << firstUnique4.showFirstUnique() << endl;
+    cout << endl;
+
     return 0;
 }
