@@ -81,7 +81,7 @@ class FirstUnique {
     }
 
     int showFirstUnique() {
-        return (!uniqueNumbers.empty()) ? uniqueNumbers.front() : -1;
+        return (uniqueNumbers.empty()) ? -1 : uniqueNumbers.front();
     }
 
     void add(int value) {
