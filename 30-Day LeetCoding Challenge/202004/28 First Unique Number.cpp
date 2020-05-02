@@ -1,6 +1,7 @@
 #include <iostream>
 #include <list>
 #include <unordered_map>
+#include <unordered_set>
 #include <vector>
 using namespace std;
 
@@ -68,11 +69,45 @@ class FirstUnique2 {
 
 class FirstUnique {
    private:
+    list<int> uniqueNumbers;
+    unordered_map<int, list<int>::iterator> map;
+    unordered_set<int> set;
+
+   public:
+    FirstUnique(vector<int>& nums) {
+        for (int num : nums) {
+            add(num);
+        }
+    }
+
+    int showFirstUnique() {
+        if (uniqueNumbers.empty()) return -1;
+        return uniqueNumbers.front();
+    }
+
+    void add(int value) {
+        if (set.find(value) != set.end()) {  
+            if (map.find(value) != map.end()) {
+                list<int>::iterator p = map[value];
+                uniqueNumbers.erase(p);
+                auto map_iter = map.find(value);
+                map.erase(map_iter);
+            }
+        } else {
+            set.insert(value);
+            uniqueNumbers.push_back(value);
+            map[value] = prev(uniqueNumbers.end());
+        }
+    }
+};
+
+class FirstUnique4 {
+   private:
     list<int> l;
     unordered_map<int, bool> hmap;
 
    public:
-    FirstUnique(vector<int>& nums) {
+    FirstUnique4(vector<int>& nums) {
         for (auto i : nums) {
             if (hmap.find(i) == hmap.end()) {
                 l.push_back(i);
