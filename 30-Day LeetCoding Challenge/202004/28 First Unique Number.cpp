@@ -70,8 +70,8 @@ class FirstUnique2 {
 class FirstUnique {
    private:
     list<int> uniqueNumbers;
-    unordered_map<int, list<int>::iterator> map;
     unordered_set<int> set;
+    unordered_map<int, list<int>::iterator> map;
 
    public:
     FirstUnique(vector<int>& nums) {
