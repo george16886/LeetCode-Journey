@@ -1,6 +1,7 @@
 #include <iostream>
 #include <list>
 #include <unordered_map>
+#include <unordered_set>
 #include <vector>
 using namespace std;
 
@@ -68,6 +69,7 @@ class FirstUnique2 {
 
 class FirstUnique {
    private:
+    unordered_set<int> set;
     list<int> l;
     unordered_map<int, list<int>::iterator> hmap;
 
@@ -83,12 +85,15 @@ class FirstUnique {
     }
 
     void add(int value) {
-        auto map_iter = hmap.find(value);
-        if (map_iter != hmap.end()) {
-            list<int>::iterator list_iter = hmap[value];
-            l.erase(list_iter);
-            hmap.erase(map_iter);
+        if (set.find(value) != set.end()) {
+            auto map_iter = hmap.find(value);
+            if (map_iter != hmap.end()) {
+                list<int>::iterator list_iter = hmap[value];
+                l.erase(list_iter);
+                hmap.erase(map_iter);
+            }
         } else {
+            set.insert(value);
             l.push_back(value);
             hmap[value] = --l.end();  // prev(l.end());
         }
@@ -179,6 +184,12 @@ int main(int argc, char** argv) {
     firstUnique4.showFirstUnique();
     cout << firstUnique4.showFirstUnique() << endl;
     firstUnique4.add(3);
+    firstUnique4.showFirstUnique();
+    cout << firstUnique4.showFirstUnique() << endl;
+    firstUnique4.add(2);
+    firstUnique4.showFirstUnique();
+    cout << firstUnique4.showFirstUnique() << endl;
+    firstUnique4.add(5);
     firstUnique4.showFirstUnique();
     cout << firstUnique4.showFirstUnique() << endl;
     firstUnique4.add(2);
