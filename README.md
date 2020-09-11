@@ -1,7 +1,7 @@
 # LeetCode Solutions
 
 * [x] *Programming language*: **C++**
-* [x] *Environment*: **ubuntu 16.04**, **win10 x64**
+* [x] *Environment*: **Ubuntu 16.04**, **Win10 x64**
 * [x] *Tool*: **Visual Studio Code** 
 
 * [**LeetCode Journey**](https://george16886.gitlab.io/categories/LeetCode/) @[**george16886's blog**](https://george16886.gitlab.io)
