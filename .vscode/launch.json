@@ -8,7 +8,7 @@
             "name": "g++.exe - 建置及偵錯使用中的檔案",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${fileDirname}\\exe\\${fileBasenameNoExtension}.exe",
+            "program": "${workspaceFolder}\\exe\\${fileBasenameNoExtension}.exe",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",

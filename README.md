@@ -1,10 +1,10 @@
 # LeetCode Solutions
 
-> * [x] *Programming language*: **C++**
-> * [x] *Environment*: **ubuntu 16.04**, **win10 x64**
-> * [x] *Tool*: **Visual Studio Code** 
+* [x] *Programming language*: **C++**
+* [x] *Environment*: **ubuntu 16.04**, **win10 x64**
+* [x] *Tool*: **Visual Studio Code** 
 
-> * [**LeetCode Journey**](https://george16886.gitlab.io/categories/LeetCode/) @[**george16886's blog**](https://george16886.gitlab.io)
+* [**LeetCode Journey**](https://george16886.gitlab.io/categories/LeetCode/) @[**george16886's blog**](https://george16886.gitlab.io)
 
 ---
 
@@ -22,3 +22,5 @@
    - 選 Path -> 編輯 -> 新增: （若安裝時沒有更新路徑直接複製下面即可）
    C:\Program Files\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin
 5. F5 to run
+   - C++ (GDB/LLDB)
+   - g++.exe - 建置及偵錯使用中的檔案
