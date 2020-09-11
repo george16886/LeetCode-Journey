@@ -12,7 +12,7 @@
                 "-g",
                 "${file}",
                 "-o",
-                "${fileDirname}/bin/${fileBasenameNoExtension}"
+                "${workspaceFolder}/bin/${fileBasenameNoExtension}"
             ],
             "options": {
                 "cwd": "/usr/bin"
