@@ -19,8 +19,8 @@
    - For Architecture select x86_64 and then select Next
 4. Add the path to your Mingw-w64 bin folder to the Windows PATH environment variable.
    - 本機右鍵 -> 內容 -> 進階 -> 環境變數
-   - 選 Path -> 編輯 -> 新增: （若安裝時沒有更新路徑直接複製下面即可）
-   C:\Program Files\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin
+   - 選 Path -> 編輯 -> 新增（若安裝 Mingw-w64 時沒有更新路徑直接複製下面一行即可）
+   - C:\Program Files\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin
 5. F5 to run
    - C++ (GDB/LLDB)
    - g++.exe - 建置及偵錯使用中的檔案
