@@ -14,7 +14,7 @@
 
 1. Install [Visual Studio Code](https://code.visualstudio.com/download).
 2. Install the [C/C++ extension for VS Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools).
-   - Search 'C++' in the Extensions view (Ctrl+Shift+X) of VS Code 
+   - Search for 'C++' in the Extensions view (Ctrl+Shift+X) of VS Code 
 3. Install [Mingw-w64](https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/installer/mingw-w64-install.exe/download).
    - Architecture -> **x86_64**
 4. Add the path to your Mingw-w64 bin folder to the Windows PATH environment variable.
