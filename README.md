@@ -8,6 +8,18 @@
 
 ---
 
+## To run the code with Visual Studio Code 
+
+* Windows 10
+  * Use settings in *.vscode*
+  * Create folder ***exe*** 
+
+* Ubuntu 16.04
+  * Use settings in *.vscode_ubuntu*
+  * Create folder ***bin*** 
+
+---
+
 ## Coding with Visual Studio Code @Win10 x64
 
 ### Using GCC with MinGW
