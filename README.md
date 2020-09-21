@@ -10,11 +10,11 @@
 
 ## To run the code with Visual Studio Code 
 
-* Windows 10
+### Windows 10
   * Use settings in *.vscode*
   * Create folder ***exe*** 
 
-* Ubuntu 16.04
+### Ubuntu 16.04
   * Use settings in *.vscode_ubuntu*
   * Create folder ***bin*** 
 
